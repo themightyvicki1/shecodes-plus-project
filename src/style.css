@@ -1,3 +1,43 @@
+/* style body, all elements will use so no repeats - no updates when changing font in body, 
+changed inside .weather-app class div and it did update the font, had to move the css link to after bootstrap link so that it would be last
+and bootstrap wouldn't have higher priority */
+body {
+  /* font of the entire app */
+  font-family: "DM Serif Display", serif;
+  font-family: "Montserrat", sans-serif;
+  font-family: "Mooli", sans-serif;
+  font-family: "Titillium Web", sans-serif;
+  font-family: "Young Serif", serif;
+}
+
+/* styling of app */
+.weather-app {
+  /* width of app on page */
+  max-width: 600px;
+  /* center app with 0 auto, add margin at top to change 0 to size*/
+  margin: 30px auto;
+  /* padding area is the space between its content and its border */
+  padding: 20px;
+  /* border around the app */
+  border: 1px solid black;
+  /* to round the border so not so perfectly square */
+  border-radius: 10px;
+}
+
 h1 {
-  color: blue;
+  color: green;
+  font-size: 24px;
+  font-weight: 100;
+  line-height: 28px;
+  /* spacing between li and h1 remove by setting h1 margin bottom to 0 so no extra spacing */
+  margin-bottom: 0;
+}
+ul {
+  /* list has default margin and paddings b/c of default bullet points, set to 0 to remove and left align */
+  margin: 0;
+  padding: 0;
+}
+li {
+  /* remove bullet points in list */
+  list-style: none;
 }
