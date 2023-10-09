@@ -63,6 +63,6 @@ li {
 }
 
 /* to capitalize the weather condition, kind of ugly to do inside javascript */
-li {
+li:first-letter {
   text-transform: capitalize;
 }

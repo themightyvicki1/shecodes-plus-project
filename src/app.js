@@ -1,3 +1,33 @@
+// receive number of milliseconds since 1970
+function formatDate(timestamp) {
+  // calculate the date
+  // create a new variable called date, set to new Date and pass timestamp variable here
+  let date = new Date(timestamp);
+  let hours = date.getHours();
+  // fix so that hour 1 will say 01 not 1
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  let minutes = date.getMinutes();
+  // fix so that 5 passed the hour won't say 5, it'll say 05
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+
+  let dayArray = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  // to display a day not the number day of the week
+  let day = dayArray[date.getDay()];
+  return `${day} ${hours}:${minutes}`;
+}
+
 // axios function call will lead here, response back from the api, response is parameter
 function displayTemperature(response) {
   console.log(response);
@@ -23,6 +53,10 @@ function displayTemperature(response) {
   // update max
   let maxElement = document.querySelector("#max-temp");
   maxElement.innerHTML = Math.round(response.data.main.temp_max);
+  // update time
+  let timeElement = document.querySelector("#date-and-time");
+  // convert timestamp into miliseconds, function call
+  timeElement.innerHTML = formatDate(response.data.dt * 1000);
 }
 
 let apiKey = `456d41832ed298b7d12fff1db0159708`;
