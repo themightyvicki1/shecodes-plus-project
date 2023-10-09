@@ -17,9 +17,39 @@
   <body>
     <!-- wrap whole thing inside a container b/c that's how bootstrap works-->
     <div class="container">
-      <h1>hello world</h1>
-      <!--button from bootstrap-->
-      <button type="button" class="btn btn-success">Success</button>
+      <!-- app div to better control styling -->
+      <div class="weather-app">
+        <h1>Sacramento</h1>
+
+        <!-- putting other specs into list format -->
+        <ul>
+          <li>Date and time</li>
+          <li>condition</li>
+        </ul>
+
+        <!-- making grid format for other specs below -->
+        <!-- make a div class of row, then div cols inside the row-->
+        <div class="row">
+          <div class="col-6">Temperature</div>
+          <!-- col on right side of page with list of specs, put in list format -->
+          <div class="col-6">
+            <ul>
+              <li>Humidity</li>
+              <li>wind speed</li>
+              <li>min</li>
+              <li>max</li>
+            </ul>
+          </div>
+        </div>
+        <!-- before div closes, add link to github repo -->
+        <footer>
+          <a
+            href="https://github.com/themightyvicki1/shecodes-plus-project"
+            target="_blank"
+            >Open source code </a
+          >by Victoria Greer
+        </footer>
+      </div>
     </div>
   </body>
   <!--link javascript to html-->
