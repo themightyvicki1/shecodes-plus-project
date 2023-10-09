@@ -26,39 +26,53 @@
     <!-- wrap whole thing inside a container b/c that's how bootstrap works-->
     <div class="container">
       <!-- app div to better control styling -->
-      <div class="weather-app">
-        <h1>Sacramento</h1>
+      <div class="weather-app-wrapper">
+        <div class="weather-app">
+          <h1>Sacramento</h1>
 
-        <!-- putting other specs into list format -->
-        <ul>
-          <li>Date and time</li>
-          <li>condition</li>
-        </ul>
+          <!-- putting other specs into list format -->
+          <ul>
+            <li>Date and time</li>
+            <li>condition</li>
+          </ul>
 
-        <!-- making grid format for other specs below -->
-        <!-- make a div class of row, then div cols inside the row-->
-        <div class="row">
-          <div class="col-6">Temperature</div>
-          <!-- col on right side of page with list of specs, put in list format -->
-          <div class="col-6">
-            <ul>
-              <li>Humidity</li>
-              <li>wind speed</li>
-              <li>min</li>
-              <li>max</li>
-            </ul>
+          <!-- making grid format for other specs below -->
+          <!-- make a div class of row, then div cols inside the row-->
+          <div class="row">
+            <div class="col-6">
+              <i class="fa-regular fa-sun"></i>
+              <span class="temperature-digit">12</span
+              ><span class="units">°F | <a href="#">°C</a></span>
+              <!-- make F and C link by wrapping in <a href>-->
+            </div>
+
+            <!-- col on right side of page with list of specs, put in list format -->
+            <div class="col-6">
+              <ul>
+                <li>Humidity</li>
+                <li>wind speed</li>
+                <li>min</li>
+                <li>max</li>
+              </ul>
+            </div>
           </div>
-          <!-- before weather app div closes, add link to github repo -->
-          <footer>
-            <a
-              href="https://github.com/themightyvicki1/shecodes-plus-project"
-              target="_blank"
-              >Open source code </a
-            >by Victoria Greer
-          </footer>
         </div>
+        <!-- after weather app div closes, add link to github repo -->
+        <small>
+          <a
+            href="https://github.com/themightyvicki1/shecodes-plus-project"
+            target="_blank"
+            >Open source code </a
+          >by Victoria Greer
+        </small>
       </div>
     </div>
+
+    <!-- font awesome, to be able to use icons, place inside body-->
+    <script
+      src="https://kit.fontawesome.com/fbe149edcc.js"
+      crossorigin="anonymous"
+    ></script>
   </body>
   <!--link javascript to html-->
   <script src="src/app.js"></script>

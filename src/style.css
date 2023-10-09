@@ -10,20 +10,6 @@ body {
   font-family: "Young Serif", serif;
 }
 
-/* styling of app */
-.weather-app {
-  /* width of app on page */
-  max-width: 600px;
-  /* center app with 0 auto, add margin at top to change 0 to size*/
-  margin: 30px auto;
-  /* padding area is the space between its content and its border */
-  padding: 20px;
-  /* border around the app */
-  border: 1px solid black;
-  /* to round the border so not so perfectly square */
-  border-radius: 10px;
-}
-
 h1 {
   color: green;
   font-size: 24px;
@@ -40,4 +26,38 @@ ul {
 li {
   /* remove bullet points in list */
   list-style: none;
+}
+
+/* wrapping the actual app */
+.weather-app-wrapper {
+  /* width of app on page */
+  max-width: 600px;
+  /* center app with 0 auto, add margin at top to change 0 to size*/
+  margin: 30px auto;
+}
+
+/* class selectors at bottom, after generic elements */
+/* styling of app */
+.weather-app {
+  /* padding area is the space between its content and its border */
+  padding: 20px;
+  /* border around the app */
+  border: 1px solid black;
+  /* to round the border so not so perfectly square */
+  border-radius: 10px;
+}
+
+.temperature-digit {
+  color: blue;
+  font-size: 50px;
+  /* line height set to 1 to remove spacing on top, amount of space it'll take, 1 = 64px */
+  line-height: 1;
+  font-weight: 400;
+}
+
+.units {
+  position: relative;
+  font-size: 14px;
+  /* to move the C F up top next to temperature digit */
+  top: -15px;
 }
