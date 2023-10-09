@@ -61,3 +61,8 @@ li {
   /* to move the C F up top next to temperature digit */
   top: -15px;
 }
+
+/* to capitalize the weather condition, kind of ugly to do inside javascript */
+li {
+  text-transform: capitalize;
+}
