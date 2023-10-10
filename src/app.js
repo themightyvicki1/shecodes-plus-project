@@ -71,13 +71,33 @@ function displayTemperature(response) {
   iconElement.setAttribute("alt", response.data.daily[0].condition.description);
 }
 
-//let apiKey = `456d41832ed298b7d12fff1db0159708`;
-let apiKey = `0d7079af8c9adb3t72540o1c3a7eb56d`;
-let city = "Sacramento";
-//let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
-//let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=imperial`;
-let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=imperial`;
-console.log(apiUrl);
+// to handle the search
+function search(city) {
+  //let apiKey = `456d41832ed298b7d12fff1db0159708`;
+  let apiKey = `0d7079af8c9adb3t72540o1c3a7eb56d`;
+  //let city = "Sacramento";
+  //let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
+  //let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=imperial`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=imperial`;
+  //console.log(apiUrl);
+  // catch results of apiUrl in javascript with axios
+  axios.get(apiUrl).then(displayTemperature);
+}
 
-// catch results of apiUrl in javascript with axios
-axios.get(apiUrl).then(displayTemperature);
+// searchCity function, receives an event b/c added event listener
+function searchCitySubmit(event) {
+  // prevent default behavior so page doesn't reload
+  event.preventDefault();
+  let cityInputElement = document.querySelector("#city-input");
+  // access value now stored in the cityInputElement with .value of the variable
+  //console.log(cityInputElement.value);
+  // we have to search for the city element using user input, function call
+  search(cityInputElement.value);
+}
+
+// call to search function for default info when page is first loaded, this call will happen right away
+search("Sacramento");
+// link form to take control over html so that form is controlled by javascript, select
+let form = document.querySelector("#search-form");
+// add event listener to listen for the submit, go to function searchCity
+form.addEventListener("submit", searchCitySubmit);
