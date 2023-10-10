@@ -69,6 +69,8 @@ function displayTemperature(response) {
   );
   // update alt text with each city
   iconElement.setAttribute("alt", response.data.daily[0].condition.description);
+
+  fahrenheitTemperature = response.data.daily[0].temperature.day;
 }
 
 // to handle the search
@@ -95,9 +97,46 @@ function searchCitySubmit(event) {
   search(cityInputElement.value);
 }
 
-// call to search function for default info when page is first loaded, this call will happen right away
-search("Sacramento");
+// to display the temp in celsius function - prevent default event behavior
+function displayCelsiusTemp(event) {
+  event.preventDefault();
+  celsiusTemperature = ((fahrenheitTemperature - 32) * 5) / 9;
+
+  // remove the active class from the fah link b/c cel was clicked so add to cel
+  fahrenheitLink.classList.remove("active");
+  celsiusLink.classList.add("active");
+
+  //alert(celsiusTemperature);
+  // select temp element to change the html of it
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
+}
+
+// to display the temp back into fahrenheit, don't need to do math here b/c already have the temp in fahrenheit
+function displayFahrenheitTemp(event) {
+  event.preventDefault();
+  // fah link to add active and remove active from cel
+  fahrenheitLink.classList.add("active");
+  celsiusLink.classList.remove("active");
+
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+}
+
+// global variable to access it inside functions, starts as null but will be updated inside function
+let fahrenheitTemperature = null;
+let celsiusTemperature = null;
 // link form to take control over html so that form is controlled by javascript, select
 let form = document.querySelector("#search-form");
 // add event listener to listen for the submit, go to function searchCity
 form.addEventListener("submit", searchCitySubmit);
+
+// target the c and f to be able to update from c to f with a click, querySelector, event listener
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", displayCelsiusTemp);
+
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", displayFahrenheitTemp);
+
+// call to search function for default info when page is first loaded, this call will happen right away
+search("Sacramento");

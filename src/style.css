@@ -66,3 +66,13 @@ li {
 li:first-letter {
   text-transform: capitalize;
 }
+
+/* hiding that the c and f are links */
+.active {
+  color: black;
+  cursor: default;
+}
+
+.active:hover {
+  text-decoration: none;
+}
