@@ -57,10 +57,20 @@ function displayTemperature(response) {
   let timeElement = document.querySelector("#date-and-time");
   // convert timestamp into miliseconds, function call
   timeElement.innerHTML = formatDate(response.data.dt * 1000);
+  // updating icon
+  let iconElement = document.querySelector(".icon");
+  // want source attribute to be equal to the icon url, use setattribute function instead of innerHTML, change src attribute to url
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  // update alt text with each city
+  iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
 let apiKey = `456d41832ed298b7d12fff1db0159708`;
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Sacramento&appid=${apiKey}&units=imperial`;
+let city = "Sacramento";
+let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
 
 // catch results of apiUrl in javascript with axios
 axios.get(apiUrl).then(displayTemperature);
