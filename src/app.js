@@ -34,44 +34,49 @@ function displayTemperature(response) {
   // set result of querySelector to temp element to be able to select and change
   let temperatureElement = document.querySelector("#temperature");
   // update the temperature id on the page, changing html with javascript
-  temperatureElement.innerHTML = Math.round(response.data.temperature.current);
+  temperatureElement.innerHTML = Math.round(
+    response.data.daily[0].temperature.day
+  );
   // update name of city
   let cityElement = document.querySelector("#city-name");
   cityElement.innerHTML = response.data.city;
-  console.log(response.city);
+  console.log(response.data.city);
   // update weather condition
   let conditionElement = document.querySelector("#weather-condition");
-  conditionElement.innerHTML = response.data.condition.description;
+  conditionElement.innerHTML = response.data.daily[0].condition.description;
   // update humidity
   let humidityElement = document.querySelector("#humidity");
-  humidityElement.innerHTML = response.data.temperature.humidity;
+  humidityElement.innerHTML = response.data.daily[0].temperature.humidity;
   // update wind speed
   let windElement = document.querySelector("#wind-speed");
-  windElement.innerHTML = Math.round(response.data.wind.speed);
+  windElement.innerHTML = Math.round(response.data.daily[0].wind.speed);
   // update min
-  let feelsElement = document.querySelector("#feels-like");
-  feelsElement.innerHTML = Math.round(response.data.temperature.feels_like);
-
+  let minElement = document.querySelector("#min-temp");
+  minElement.innerHTML = Math.round(response.data.daily[0].temperature.minimum);
+  //update max
+  let maxElement = document.querySelector("#max-temp");
+  maxElement.innerHTML = Math.round(response.data.daily[0].temperature.maximum);
   // update time
   let timeElement = document.querySelector("#date-and-time");
   // convert timestamp into miliseconds, function call
-  timeElement.innerHTML = formatDate(response.data.time * 1000);
+  timeElement.innerHTML = formatDate(response.data.daily[0].time * 1000);
   // updating icon
   let iconElement = document.querySelector(".icon");
   // want source attribute to be equal to the icon url, use setattribute function instead of innerHTML, change src attribute to url
   iconElement.setAttribute(
     "src",
-    `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
+    `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.daily[0].condition.icon}.png`
   );
   // update alt text with each city
-  iconElement.setAttribute("alt", response.data.condition.description);
+  iconElement.setAttribute("alt", response.data.daily[0].condition.description);
 }
 
 //let apiKey = `456d41832ed298b7d12fff1db0159708`;
 let apiKey = `0d7079af8c9adb3t72540o1c3a7eb56d`;
 let city = "Sacramento";
 //let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
-let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=imperial`;
+//let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=imperial`;
+let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=imperial`;
 console.log(apiUrl);
 
 // catch results of apiUrl in javascript with axios
