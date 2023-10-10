@@ -34,43 +34,45 @@ function displayTemperature(response) {
   // set result of querySelector to temp element to be able to select and change
   let temperatureElement = document.querySelector("#temperature");
   // update the temperature id on the page, changing html with javascript
-  temperatureElement.innerHTML = Math.round(response.data.main.temp);
+  temperatureElement.innerHTML = Math.round(response.data.temperature.current);
   // update name of city
   let cityElement = document.querySelector("#city-name");
-  cityElement.innerHTML = response.data.name;
+  cityElement.innerHTML = response.data.city;
+  console.log(response.city);
   // update weather condition
   let conditionElement = document.querySelector("#weather-condition");
-  conditionElement.innerHTML = response.data.weather[0].description;
+  conditionElement.innerHTML = response.data.condition.description;
   // update humidity
   let humidityElement = document.querySelector("#humidity");
-  humidityElement.innerHTML = response.data.main.humidity;
+  humidityElement.innerHTML = response.data.temperature.humidity;
   // update wind speed
   let windElement = document.querySelector("#wind-speed");
-  windElement.innerHTML = response.data.wind.speed;
+  windElement.innerHTML = Math.round(response.data.wind.speed);
   // update min
-  let minElement = document.querySelector("#min-temp");
-  minElement.innerHTML = Math.round(response.data.main.temp_min);
-  // update max
-  let maxElement = document.querySelector("#max-temp");
-  maxElement.innerHTML = Math.round(response.data.main.temp_max);
+  let feelsElement = document.querySelector("#feels-like");
+  feelsElement.innerHTML = Math.round(response.data.temperature.feels_like);
+
   // update time
   let timeElement = document.querySelector("#date-and-time");
   // convert timestamp into miliseconds, function call
-  timeElement.innerHTML = formatDate(response.data.dt * 1000);
+  timeElement.innerHTML = formatDate(response.data.time * 1000);
   // updating icon
   let iconElement = document.querySelector(".icon");
   // want source attribute to be equal to the icon url, use setattribute function instead of innerHTML, change src attribute to url
   iconElement.setAttribute(
     "src",
-    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
   );
   // update alt text with each city
-  iconElement.setAttribute("alt", response.data.weather[0].description);
+  iconElement.setAttribute("alt", response.data.condition.description);
 }
 
-let apiKey = `456d41832ed298b7d12fff1db0159708`;
+//let apiKey = `456d41832ed298b7d12fff1db0159708`;
+let apiKey = `0d7079af8c9adb3t72540o1c3a7eb56d`;
 let city = "Sacramento";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
+//let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
+let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=imperial`;
+console.log(apiUrl);
 
 // catch results of apiUrl in javascript with axios
 axios.get(apiUrl).then(displayTemperature);
