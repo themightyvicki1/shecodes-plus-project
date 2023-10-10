@@ -25,6 +25,7 @@ function formatDate(timestamp) {
   ];
   // to display a day not the number day of the week
   let day = dayArray[date.getDay()];
+
   return `${day} ${hours}:${minutes}`;
 }
 
@@ -70,7 +71,42 @@ function displayTemperature(response) {
   // update alt text with each city
   iconElement.setAttribute("alt", response.data.daily[0].condition.description);
 
+  // to get the value of the temperature and store inside a variable
   fahrenheitTemperature = response.data.daily[0].temperature.day;
+
+  // to set the 5 day forecast - first one shows high of today
+  let dayOneElement = document.querySelector("#forecast-day-1");
+  dayOneElement.innerHTML = `${Math.round(
+    response.data.daily[0].temperature.maximum
+  )}°`;
+
+  // to change the day of the day one forecast to today's day
+  //let forecastOneElement = document.querySelector("#additional-day-1");
+  // forecastOneElement.innerHTML = formatDate(response.data.daily[0].time * 1000);
+
+  // next day shows high of next day
+  let dayTwoElement = document.querySelector("#forecast-day-2");
+  dayTwoElement.innerHTML = `${Math.round(
+    response.data.daily[1].temperature.maximum
+  )}°`;
+
+  // third day
+  let dayThreeElement = document.querySelector("#forecast-day-3");
+  dayThreeElement.innerHTML = `${Math.round(
+    response.data.daily[2].temperature.maximum
+  )}°`;
+
+  // fourth day
+  let dayFourElement = document.querySelector("#forecast-day-4");
+  dayFourElement.innerHTML = `${Math.round(
+    response.data.daily[3].temperature.maximum
+  )}°`;
+
+  // fifth day
+  let dayFiveElement = document.querySelector("#forecast-day-5");
+  dayFiveElement.innerHTML = `${Math.round(
+    response.data.daily[4].temperature.maximum
+  )}°`;
 }
 
 // to handle the search
@@ -138,5 +174,5 @@ celsiusLink.addEventListener("click", displayCelsiusTemp);
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", displayFahrenheitTemp);
 
-// call to search function for default info when page is first loaded, this call will happen right away
+// call to search function for default info when page is first loaded, this call will happen right away instead of using fake data to start
 search("Sacramento");
