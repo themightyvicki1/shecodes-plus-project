@@ -1,8 +1,8 @@
 // receive number of milliseconds since 1970
-function formatDate(timestamp) {
+function formatDate() {
   // calculate the date
   // create a new variable called date, set to new Date and pass timestamp variable here
-  let date = new Date(timestamp);
+  let date = new Date();
   let hours = date.getHours();
   // fix so that hour 1 will say 01 not 1
   if (hours < 10) {
@@ -60,7 +60,7 @@ function displayTemperature(response) {
   // update time
   let timeElement = document.querySelector("#date-and-time");
   // convert timestamp into miliseconds, function call
-  timeElement.innerHTML = formatDate(response.data.daily[0].time * 1000);
+  timeElement.innerHTML = formatDate(response.data.daily[0].time);
   // updating icon
   let iconElement = document.querySelector(".icon");
   // want source attribute to be equal to the icon url, use setattribute function instead of innerHTML, change src attribute to url
@@ -81,8 +81,8 @@ function displayTemperature(response) {
   )}°`;
 
   // to change the day of the day one forecast to today's day
-  //let forecastOneElement = document.querySelector("#additional-day-1");
-  // forecastOneElement.innerHTML = formatDate(response.data.daily[0].time * 1000);
+  let forecastOneElement = document.querySelector("#today");
+  forecastOneElement.innerHTML = "Today";
 
   // next day shows high of next day
   let dayTwoElement = document.querySelector("#forecast-day-2");
@@ -90,11 +90,17 @@ function displayTemperature(response) {
     response.data.daily[1].temperature.maximum
   )}°`;
 
+  let forecastTwoElement = document.querySelector("#day-2");
+  forecastTwoElement.innerHTML = "Tomorrow";
+
   // third day
   let dayThreeElement = document.querySelector("#forecast-day-3");
   dayThreeElement.innerHTML = `${Math.round(
     response.data.daily[2].temperature.maximum
   )}°`;
+
+  let forecastThreeElement = document.querySelector("#day-3");
+  forecastThreeElement.innerHTML = "day 3";
 
   // fourth day
   let dayFourElement = document.querySelector("#forecast-day-4");
@@ -102,11 +108,17 @@ function displayTemperature(response) {
     response.data.daily[3].temperature.maximum
   )}°`;
 
+  let forecastFourElement = document.querySelector("#day-4");
+  forecastFourElement.innerHTML = "day 4";
+
   // fifth day
   let dayFiveElement = document.querySelector("#forecast-day-5");
   dayFiveElement.innerHTML = `${Math.round(
     response.data.daily[4].temperature.maximum
   )}°`;
+
+  let forecastFiveElement = document.querySelector("#day-5");
+  forecastFiveElement.innerHTML = "day 5";
 }
 
 // to handle the search

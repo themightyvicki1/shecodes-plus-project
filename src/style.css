@@ -76,3 +76,7 @@ li:first-letter {
 .active:hover {
   text-decoration: none;
 }
+
+#additional-specs-display {
+  border: 1px solid black;
+}
