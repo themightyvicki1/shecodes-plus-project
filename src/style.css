@@ -12,7 +12,7 @@ body {
 
 h1 {
   color: green;
-  font-size: 24px;
+  font-size: 12px;
   font-weight: 100;
   line-height: 28px;
   /* spacing between li and h1 remove by setting h1 margin bottom to 0 so no extra spacing */
@@ -78,5 +78,16 @@ li:first-letter {
 }
 
 #additional-specs-display {
-  border: 1px solid black;
+  border: 2px dashed black;
+  border-radius: 8px;
+  font-size: 13px;
+  padding: 10px 10px;
+  box-shadow: 10px 5px 5px gray;
+}
+
+#bottom-col {
+  padding-top: 30px;
+  padding-bottom: 20px;
+  /*padding-left: 80px;*/
+  /*padding-right: 20px;*/
 }

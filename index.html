@@ -54,7 +54,8 @@
               </div>
             </div>
           </form>
-          <h1 id="city-name"></h1>
+          <h1 id="display-full-date-here"></h1>
+          <h2 id="city-name"></h2>
 
           <!-- putting other specs into list format -->
           <ul>
@@ -79,18 +80,30 @@
               <!-- make F and C link by wrapping in <a href>-->
             </div>
 
-            <!-- col on right side of page with list of specs, put in list format -->
-            <div class="col-6" id="additional-specs-display">
+            <!-- col on right side of page with list of specs, put in list format, made this col 4 instead of 6 to make the border smaller width -->
+            <div class="col-4" id="additional-specs-display">
               <ul>
-                <li>humidity: <span id="humidity"></span>%</li>
-                <li>wind speed: <span id="wind-speed"></span> mph</li>
-                <li>min: <span id="min-temp"></span>°</li>
-                <li>max: <span id="max-temp"></span>°</li>
+                <li>
+                  <i class="fa-solid fa-droplet"></i> humidity:
+                  <span id="humidity"></span>%
+                </li>
+                <li>
+                  <i class="fa-solid fa-wind"></i> wind speed:
+                  <span id="wind-speed"></span> mph
+                </li>
+                <li>
+                  <i class="fa-solid fa-temperature-low"></i> min:
+                  <span id="min-temp"></span>°
+                </li>
+                <li>
+                  <i class="fa-solid fa-temperature-high"></i> max temp:
+                  <span id="max-temp"></span>°
+                </li>
               </ul>
             </div>
           </div>
           <!-- creating grid for future days of the week-->
-          <div class="row">
+          <div class="row" id="bottom-col">
             <div class="col-2" id="additional-day-1">
               <span id="today">day 1</span>
               <div id="forecast-day-1">one</div>

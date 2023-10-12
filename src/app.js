@@ -3,6 +3,7 @@ function formatDate() {
   // calculate the date
   // create a new variable called date, set to new Date and pass timestamp variable here
   let date = new Date();
+  let actualDate = date.getDate();
   let hours = date.getHours();
   // fix so that hour 1 will say 01 not 1
   if (hours < 10) {
@@ -23,8 +24,31 @@ function formatDate() {
     "Friday",
     "Saturday",
   ];
+
+  let months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  let month = months[date.getMonth()];
+
   // to display a day not the number day of the week
   let day = dayArray[date.getDay()];
+  let year = date.getFullYear();
+
+  let dateFormatted = `${day}, ${month} ${actualDate}, ${year}`;
+
+  let fullDateElement = document.querySelector("#display-full-date-here");
+  fullDateElement.innerHTML = dateFormatted;
 
   return `${day} ${hours}:${minutes}`;
 }
