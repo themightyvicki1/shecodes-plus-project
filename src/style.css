@@ -82,7 +82,7 @@ li:first-letter {
   border-radius: 8px;
   font-size: 13px;
   padding: 10px 10px;
-  box-shadow: 10px 5px 5px gray;
+  box-shadow: 8px 4px 4px rgb(186, 188, 221);
 }
 
 #bottom-col {
@@ -90,4 +90,8 @@ li:first-letter {
   padding-bottom: 20px;
   /*padding-left: 80px;*/
   /*padding-right: 20px;*/
+}
+
+#current-button:hover {
+  cursor: pointer;
 }

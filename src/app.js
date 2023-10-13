@@ -182,6 +182,9 @@ function displayCelsiusTemp(event) {
   // select temp element to change the html of it
   let temperatureElement = document.querySelector("#temperature");
   temperatureElement.innerHTML = Math.round(celsiusTemperature);
+
+  //let todayTemp = document.querySelector("#forecast-day-1");
+  //todayTemp.innerHTML = `${Math.round(celsiusTemperature)}°`;
 }
 
 // to display the temp back into fahrenheit, don't need to do math here b/c already have the temp in fahrenheit
