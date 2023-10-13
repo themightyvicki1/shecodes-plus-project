@@ -103,3 +103,7 @@ li:first-letter {
 #current-button:hover {
   cursor: pointer;
 }
+
+#coded-by {
+  color: #f6d2ff;
+}
