@@ -11,7 +11,7 @@ body {
 }
 
 h1 {
-  color: green;
+  color: #38598b;
   font-size: 12px;
   font-weight: 100;
   line-height: 28px;
@@ -45,6 +45,13 @@ li {
   border: 1px solid black;
   /* to round the border so not so perfectly square */
   border-radius: 10px;
+  background: linear-gradient(
+    90.7deg,
+    rgb(255, 253, 218) 1.9%,
+    rgb(246, 210, 255) 39.3%,
+    rgb(152, 222, 254) 64.7%,
+    rgb(251, 255, 210) 100.8%
+  );
 }
 
 .temperature-digit {
@@ -82,7 +89,8 @@ li:first-letter {
   border-radius: 8px;
   font-size: 13px;
   padding: 10px 10px;
-  box-shadow: 8px 4px 4px rgb(186, 188, 221);
+  box-shadow: 8px 4px 4px #98defe;
+  /*rgb(186, 188, 221);*/
 }
 
 #bottom-col {
