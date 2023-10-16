@@ -10,51 +10,6 @@ function formatDate() {
     hours = `0${hours}`;
   }
 
-  // setting am pm time
-  if (hours < 12) {
-    let amPm = "am";
-  } else {
-    amPm = "pm";
-  }
-
-  // changing time from 24 hour to standard
-  if (hours === 13) {
-    hours = "01";
-  }
-  if (hours === 14) {
-    hours = "02";
-  }
-  if (hours === 15) {
-    hours = "03";
-  }
-  if (hours === 16) {
-    hours = "04";
-  }
-  if (hours === 17) {
-    hours = "05";
-  }
-  if (hours === 18) {
-    hours = "06";
-  }
-  if (hours === 19) {
-    hours = "07";
-  }
-  if (hours === 20) {
-    hours = "08";
-  }
-  if (hours === 21) {
-    hours = "09";
-  }
-  if (hours === 22) {
-    hours = "10";
-  }
-  if (hours === 23) {
-    hours = "11";
-  }
-  if (hours === 24) {
-    hours = "12";
-  }
-
   let minutes = date.getMinutes();
   // fix so that 5 passed the hour won't say 5, it'll say 05
   if (minutes < 10) {
@@ -96,7 +51,7 @@ function formatDate() {
   let fullDateElement = document.querySelector("#display-full-date-here");
   fullDateElement.innerHTML = dateFormatted;
 
-  return `${day} ${hours}:${minutes} ${amPm}`;
+  return `${day} ${hours}:${minutes}`;
 }
 
 // axios function call will lead here, response back from the api, response is parameter
