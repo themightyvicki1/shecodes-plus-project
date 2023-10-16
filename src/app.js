@@ -98,52 +98,45 @@ function displayTemperature(response) {
 
   // to get the value of the temperature and store inside a variable
   fahrenheitTemperature = response.data.daily[0].temperature.day;
+}
 
+// function that will display the 5 day forecast
+function displayForecast() {
   // to set the 5 day forecast - first one shows high of today
-  let dayOneElement = document.querySelector("#forecast-day-1");
-  dayOneElement.innerHTML = `${Math.round(
-    response.data.daily[0].temperature.maximum
-  )}°`;
+  // create a new variable to select the element, id from the div we left in html
+  let forecastElement = document.querySelector("#forecast");
 
-  // to change the day of the day one forecast to today's day
-  let forecastOneElement = document.querySelector("#today");
-  forecastOneElement.innerHTML = "Today";
+  // i want the forecastElement's innerHTML to be equal to...forecast for testing
+  // innerHTML accepts HTML, use back ticks here not double quotes
+  // have to append, not replace previous content - concatenate
+  // create new variable, goal of variable is to store the HTML of the forecast, start with empty string, populate this variable with the right content
+  // want this to be a row so you can add a grid to it, inject multiple columns for the forecast for each day
+  let forecastHTML = `<div class="row">`;
 
-  // next day shows high of next day
-  let dayTwoElement = document.querySelector("#forecast-day-2");
-  dayTwoElement.innerHTML = `${Math.round(
-    response.data.daily[1].temperature.maximum
-  )}°`;
+  // to loop through each day of an array
+  let days = ["Mon", "Tue", "Wed", "Thur", "Fri"];
 
-  let forecastTwoElement = document.querySelector("#day-2");
-  forecastTwoElement.innerHTML = "Tomorrow";
+  // forEach function...it will append a new column to the row for each day
+  days.forEach(function (day) {
+    // set variable to the div's removed from HTML to display forecast
+    // adding the = forecast + will append and create a second one - to be able to repeat this block of code
+    // equal to itself PLUS all this string of code
+    forecastHTML =
+      forecastHTML +
+      `<div class="col-2">
+      <div class="weather-forecast-date">${day}</div>
+        <div class="weather-forecast-temperatures">
+          <span class="weather-forecast-temperature-max"> 18 </span>
+          <span class="weather-forecast-temperature-min"> 12 </span>
+        </div>
+    </div>
+  `;
+  });
 
-  // third day
-  let dayThreeElement = document.querySelector("#forecast-day-3");
-  dayThreeElement.innerHTML = `${Math.round(
-    response.data.daily[2].temperature.maximum
-  )}°`;
-
-  let forecastThreeElement = document.querySelector("#day-3");
-  forecastThreeElement.innerHTML = "day 3";
-
-  // fourth day
-  let dayFourElement = document.querySelector("#forecast-day-4");
-  dayFourElement.innerHTML = `${Math.round(
-    response.data.daily[3].temperature.maximum
-  )}°`;
-
-  let forecastFourElement = document.querySelector("#day-4");
-  forecastFourElement.innerHTML = "day 4";
-
-  // fifth day
-  let dayFiveElement = document.querySelector("#forecast-day-5");
-  dayFiveElement.innerHTML = `${Math.round(
-    response.data.daily[4].temperature.maximum
-  )}°`;
-
-  let forecastFiveElement = document.querySelector("#day-5");
-  forecastFiveElement.innerHTML = "day 5";
+  // close the div here, close the row, building dynamic HTML using javascript
+  forecastHTML = forecastHTML + `</div>`;
+  // i want to use t his forecastHTML variable and inject it into the innerHTML of the element we want to replace
+  forecastElement.innerHTML = forecastHTML;
 }
 
 // to handle the search
@@ -216,3 +209,5 @@ fahrenheitLink.addEventListener("click", displayFahrenheitTemp);
 
 // call to search function for default info when page is first loaded, this call will happen right away instead of using fake data to start
 search("Sacramento");
+// call to display the 5 day forecast, moving from HTML into JS as a seperate function
+displayForecast();
