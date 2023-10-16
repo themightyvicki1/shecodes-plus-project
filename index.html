@@ -71,7 +71,7 @@
 
           <!-- putting other specs into list format -->
           <ul>
-            <li>last updated: <span id="date-and-time"></span></li>
+            <li id="time">last updated: <span id="date-and-time"></span></li>
             <li id="weather-condition">condition</li>
           </ul>
 
@@ -115,29 +115,36 @@
             </div>
           </div>
           <!-- creating grid for future days of the week-->
-          <div class="row" id="bottom-col">
-            <div class="col-2" id="additional-day-1">
-              <span id="today">day 1</span>
-              <div id="forecast-day-1">one</div>
-            </div>
-            <div class="col-2" id="additional-day-2">
-              <span id="day-2">day 2</span>
-              <div id="forecast-day-2">two</div>
-            </div>
+          <div class="weather-forcast">
+            <div class="row" id="bottom-col">
+              <div class="col-2" id="additional-day-1">
+                <div id="today">day 1</div>
+                <span id="forecast-day-1">one</span>
+                <span class="low-temp" id="day-1-min">min</span>
+              </div>
+              <div class="col-2" id="additional-day-2">
+                <div id="day-2">day 2</div>
+                <span id="forecast-day-2">two</span>
+                <span class="low-temp" id="day-2-min">min</span>
+              </div>
 
-            <div class="col-2" id="additional-day-3">
-              <span id="day-3">day 3</span>
-              <div id="forecast-day-3">three</div>
-            </div>
+              <div class="col-2" id="additional-day-3">
+                <div id="day-3">day 3</div>
+                <span id="forecast-day-3">three</span>
+                <span class="low-temp" id="day-3-min">min</span>
+              </div>
 
-            <div class="col-2" id="additional-day-4">
-              <span id="day-4">day 4</span>
-              <div id="forecast-day-4">four</div>
-            </div>
+              <div class="col-2" id="additional-day-4">
+                <div id="day-4">day 4</div>
+                <span id="forecast-day-4">four</span>
+                <span class="low-temp" id="day-4-min">min</span>
+              </div>
 
-            <div class="col-2" id="additional-day-5">
-              <span id="day-5">day 5</span>
-              <div id="forecast-day-5">five</div>
+              <div class="col-2" id="additional-day-5">
+                <div id="day-5">day 5</div>
+                <span id="forecast-day-5">five</span>
+                <span class="low-temp" id="day-5-min">min</span>
+              </div>
             </div>
           </div>
         </div>

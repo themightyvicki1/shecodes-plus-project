@@ -107,3 +107,19 @@ li:first-letter {
 #coded-by {
   color: #f6d2ff;
 }
+/* forcast row */
+.weather-forcast {
+  margin-top: 20px;
+  text-align: center;
+}
+
+/* styling the last updated and weather condition together */
+#time,
+#weather-condition {
+  opacity: 0.5;
+}
+
+/* low temps of 5 day forcast */
+.low-temp {
+  opacity: 0.5;
+}
