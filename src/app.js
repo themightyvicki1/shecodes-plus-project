@@ -98,10 +98,14 @@ function displayTemperature(response) {
 
   // to get the value of the temperature and store inside a variable
   fahrenheitTemperature = response.data.daily[0].temperature.day;
+
+  // to show the temp here but to also pass the response to the next function for the 5 day forecast as well
+  displayForecast(response);
 }
 
 // function that will display the 5 day forecast
-function displayForecast() {
+function displayForecast(response) {
+  console.log(`here it is ${response}`);
   // to set the 5 day forecast - first one shows high of today
   // create a new variable to select the element, id from the div we left in html
   let forecastElement = document.querySelector("#forecast");
@@ -192,6 +196,25 @@ function displayFahrenheitTemp(event) {
   temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
 }
 
+// get current position
+function getCurrentPosition() {
+  navigator.geolocation.getCurrentPosition(showPosition);
+}
+
+// show position function, receiving the position
+function showPosition(position) {
+  let latitude = position.coords.latitude;
+  let longitude = position.coords.longitude;
+
+  // new api call using lat and long
+  let apiKey = `0d7079af8c9adb3t72540o1c3a7eb56d`;
+  let apiUrlLongLat = `https://api.shecodes.io/weather/v1/forecast?lon=${longitude}&lat=${latitude}&key=${apiKey}&units=imperial`;
+
+  console.log(apiUrlLongLat);
+  // axios call
+  // just call back to same showTemp function, the response from this function's axios call will get put in that function
+  axios.get(apiUrlLongLat).then(displayTemperature);
+}
 // global variable to access it inside functions, starts as null but will be updated inside function
 let fahrenheitTemperature = null;
 let celsiusTemperature = null;
@@ -210,4 +233,8 @@ fahrenheitLink.addEventListener("click", displayFahrenheitTemp);
 // call to search function for default info when page is first loaded, this call will happen right away instead of using fake data to start
 search("Sacramento");
 // call to display the 5 day forecast, moving from HTML into JS as a seperate function
-displayForecast();
+displayForecast("Sacramento");
+
+// display weather based on current location
+let currentButton = document.querySelector("#current-button");
+currentButton.addEventListener("click", getCurrentPosition);
