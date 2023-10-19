@@ -253,7 +253,7 @@ fahrenheitLink.addEventListener("click", displayFahrenheitTemp);
 // call to search function for default info when page is first loaded, this call will happen right away instead of using fake data to start
 search("Sacramento");
 // call to display the 5 day forecast, moving from HTML into JS as a seperate function
-displayForecast("Sacramento");
+//displayForecast("Sacramento"); *** this call was making my current button no longer work
 
 // display weather based on current location
 let currentButton = document.querySelector("#current-button");
