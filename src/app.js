@@ -126,16 +126,14 @@ function displayForecast(response) {
   // condition so that it'll only show 5 days not 8 days, returns the index...index of the array 0 1 2 3...
   // forEach function...it will append a new column to the row for each day
   forecast.forEach(function (forecastDay, index) {
-    // added in the while i < 6 b/c the icon wasn't updating, it was only using position 0, needed to move to the next icon in array
-    while (i < 6) {
-      // if the index is lower than 6 then add a new column to the html variable. 6 or more do nothing
-      if (index < 6) {
-        // set variable to the div's removed from HTML to display forecast
-        // adding the = forecast + will append and create a second one - to be able to repeat this block of code
-        // equal to itself PLUS all this string of code
-        forecastHTML =
-          forecastHTML +
-          `<div class="col-2">
+    // if the index is lower than 6 then add a new column to the html variable. 6 or more do nothing
+    if (index < 6) {
+      // set variable to the div's removed from HTML to display fore cast
+      // adding the = forecast + will append and create a second one - to be able to repeat this block of code
+      // equal to itself PLUS all this string of code
+      forecastHTML =
+        forecastHTML +
+        `<div class="col-2">
       <div class="weather-forecast-date">${formatDay(forecastDay.time)}</div>
       
       
@@ -154,9 +152,10 @@ function displayForecast(response) {
         </div>
     </div>
   `;
-      }
-      i++;
     }
+    // needed to loop through the array, it wasn't updated and moving to the next index without the iteration here
+    i++;
+    index++;
   });
 
   // sending the timestamp from above, inside the array, to this function to get the actual day of the week
