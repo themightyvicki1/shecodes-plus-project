@@ -117,24 +117,33 @@ function displayForecast(response) {
   // want this to be a row so you can add a grid to it, inject multiple columns for the forecast for each day
   let forecastHTML = `<div class="row">`;
 
+  // to loop through the icon array
+  let i = 0;
+
   // to loop through each day of an array
   //let days = ["Mon", "Tue", "Wed", "Thur", "Fri"];
 
   // condition so that it'll only show 5 days not 8 days, returns the index...index of the array 0 1 2 3...
   // forEach function...it will append a new column to the row for each day
   forecast.forEach(function (forecastDay, index) {
-    // if the index is lower than 6 then add a new column to the html variable. 6 or more do nothing
-    if (index < 6) {
-      // set variable to the div's removed from HTML to display forecast
-      // adding the = forecast + will append and create a second one - to be able to repeat this block of code
-      // equal to itself PLUS all this string of code
-      forecastHTML =
-        forecastHTML +
-        `<div class="col-2">
+    // added in the while i < 6 b/c the icon wasn't updating, it was only using position 0, needed to move to the next icon in array
+    while (i < 6) {
+      // if the index is lower than 6 then add a new column to the html variable. 6 or more do nothing
+      if (index < 6) {
+        // set variable to the div's removed from HTML to display forecast
+        // adding the = forecast + will append and create a second one - to be able to repeat this block of code
+        // equal to itself PLUS all this string of code
+        forecastHTML =
+          forecastHTML +
+          `<div class="col-2">
       <div class="weather-forecast-date">${formatDay(forecastDay.time)}</div>
+      
+      
       <img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${
-        response.data.daily[0].condition.icon
+        response.data.daily[i].condition.icon
       }.png" alt = "" width="42"/>
+      
+      
         <div class="weather-forecast-temperatures">
           <span class="weather-forecast-temperature-max"> ${Math.round(
             forecastDay.temperature.maximum
@@ -145,6 +154,8 @@ function displayForecast(response) {
         </div>
     </div>
   `;
+      }
+      i++;
     }
   });
 
@@ -181,6 +192,7 @@ function searchCitySubmit(event) {
   // prevent default behavior so page doesn't reload
   event.preventDefault();
   let cityInputElement = document.querySelector("#city-input");
+
   // access value now stored in the cityInputElement with .value of the variable
   //console.log(cityInputElement.value);
   // we have to search for the city element using user input, function call
