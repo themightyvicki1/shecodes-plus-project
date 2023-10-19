@@ -105,7 +105,7 @@ function displayTemperature(response) {
 
 // function that will display the 5 day forecast
 function displayForecast(response) {
-  console.log(`here it is ${response}`);
+  let forecast = response.data.daily;
   // to set the 5 day forecast - first one shows high of today
   // create a new variable to select the element, id from the div we left in html
   let forecastElement = document.querySelector("#forecast");
@@ -118,24 +118,44 @@ function displayForecast(response) {
   let forecastHTML = `<div class="row">`;
 
   // to loop through each day of an array
-  let days = ["Mon", "Tue", "Wed", "Thur", "Fri"];
+  //let days = ["Mon", "Tue", "Wed", "Thur", "Fri"];
 
+  // condition so that it'll only show 5 days not 8 days, returns the index...index of the array 0 1 2 3...
   // forEach function...it will append a new column to the row for each day
-  days.forEach(function (day) {
-    // set variable to the div's removed from HTML to display forecast
-    // adding the = forecast + will append and create a second one - to be able to repeat this block of code
-    // equal to itself PLUS all this string of code
-    forecastHTML =
-      forecastHTML +
-      `<div class="col-2">
-      <div class="weather-forecast-date">${day}</div>
+  forecast.forEach(function (forecastDay, index) {
+    // if the index is lower than 6 then add a new column to the html variable. 6 or more do nothing
+    if (index < 6) {
+      // set variable to the div's removed from HTML to display forecast
+      // adding the = forecast + will append and create a second one - to be able to repeat this block of code
+      // equal to itself PLUS all this string of code
+      forecastHTML =
+        forecastHTML +
+        `<div class="col-2">
+      <div class="weather-forecast-date">${formatDay(forecastDay.time)}</div>
+      <img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${
+        response.data.daily[0].condition.icon
+      }.png" alt = "" width="42"/>
         <div class="weather-forecast-temperatures">
-          <span class="weather-forecast-temperature-max"> 18 </span>
-          <span class="weather-forecast-temperature-min"> 12 </span>
+          <span class="weather-forecast-temperature-max"> ${Math.round(
+            forecastDay.temperature.maximum
+          )}° </span>
+          <span class="weather-forecast-temperature-min"> ${Math.round(
+            forecastDay.temperature.minimum
+          )}° </span>
         </div>
     </div>
   `;
+    }
   });
+
+  // sending the timestamp from above, inside the array, to this function to get the actual day of the week
+  // to get the day for the 5 day forecast
+  function formatDay(timestamp) {
+    let date = new Date(timestamp * 1000);
+    let day = date.getDay();
+    let days = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
+    return days[day];
+  }
 
   // close the div here, close the row, building dynamic HTML using javascript
   forecastHTML = forecastHTML + `</div>`;
@@ -212,7 +232,7 @@ function showPosition(position) {
 
   console.log(apiUrlLongLat);
   // axios call
-  // just call back to same showTemp function, the response from this function's axios call will get put in that function
+  // just call back to same displayTemp function, the response from this function's axios call will get put in that function
   axios.get(apiUrlLongLat).then(displayTemperature);
 }
 // global variable to access it inside functions, starts as null but will be updated inside function
