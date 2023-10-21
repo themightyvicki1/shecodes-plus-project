@@ -175,7 +175,7 @@ function displayForecast(response) {
       // equal to itself PLUS all this string of code
       forecastHTML =
         forecastHTML +
-        `<div class="col-2">
+        `<div class="col-2" id ="forecast-bubble">
       <div class="weather-forecast-date">${formatDay(forecastDay.time)}</div>
       
       
@@ -304,7 +304,7 @@ let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", displayFahrenheitTemp);
 
 // call to search function for default info when page is first loaded, this call will happen right away instead of using fake data to start
-search("Sacramento");
+search("Seattle");
 // call to display the 5 day forecast, moving from HTML into JS as a seperate function
 //displayForecast("Sacramento"); *** this call was making my current button no longer work
 

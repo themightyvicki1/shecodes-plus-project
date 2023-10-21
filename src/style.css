@@ -3,20 +3,21 @@ changed inside .weather-app class div and it did update the font, had to move th
 and bootstrap wouldn't have higher priority */
 body {
   /* font of the entire app */
-  font-family: "DM Serif Display", serif;
   font-family: "Montserrat", sans-serif;
-  font-family: "Mooli", sans-serif;
-  font-family: "Titillium Web", sans-serif;
-  font-family: "Young Serif", serif;
+  background: #f2f2f2;
 }
 
 h1 {
-  color: #38598b;
+  color: #6643b5;
   font-size: 12px;
   font-weight: 100;
   line-height: 28px;
   /* spacing between li and h1 remove by setting h1 margin bottom to 0 so no extra spacing */
   margin-bottom: 0;
+}
+
+h2 {
+  color: #6643b5;
 }
 ul {
   /* list has default margin and paddings b/c of default bullet points, set to 0 to remove and left align */
@@ -42,7 +43,7 @@ li {
   /* padding area is the space between its content and its border */
   padding: 20px;
   /* border around the app */
-  border: 1px solid black;
+  border: 3px solid #34495e;
   /* to round the border so not so perfectly square */
   border-radius: 10px;
   background: linear-gradient(
@@ -55,7 +56,7 @@ li {
 }
 
 .temperature-digit {
-  color: blue;
+  color: #6643b5;
   font-size: 50px;
   /* line height set to 1 to remove spacing on top, amount of space it'll take, 1 = 64px */
   line-height: 1;
@@ -90,7 +91,7 @@ li:first-letter {
   font-size: 13px;
   padding: 10px 10px;
   box-shadow: 8px 4px 4px #98defe;
-  /*rgb(186, 188, 221);*/
+  color: #34495e;
 }
 
 #bottom-col {
@@ -121,4 +122,17 @@ li:first-letter {
 /* low temps of 5 day forcast */
 .weather-forecast-temperature-min {
   opacity: 0.5;
+}
+
+#search-button,
+#current-button {
+  background: #a2ddfe;
+  color: #34495e;
+}
+.active {
+  color: #34495e;
+}
+
+.weather-forecast-date {
+  color: #34495e;
 }
