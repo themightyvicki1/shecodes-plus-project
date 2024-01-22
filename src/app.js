@@ -11,7 +11,7 @@ function formatDate() {
   }
 
   let ampm = "am";
-  if (hours > 12) {
+  if (hours > 11) {
     ampm = "pm";
   }
 
@@ -93,7 +93,7 @@ function formatDate() {
   let fullDateElement = document.querySelector("#display-full-date-here");
   fullDateElement.innerHTML = dateFormatted;
 
-  return `${day} ${hours}:${minutes} ${ampm}`;
+  return `${day} ${hours}:${minutes}${ampm}`;
 }
 
 // axios function call will lead here, response back from the api, response is parameter
