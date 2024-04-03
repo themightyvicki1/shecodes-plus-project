@@ -107,6 +107,15 @@ li:first-letter {
   color: gray;
 }
 
+#coded-by a {
+  text-decoration: none;
+  color: gray;
+}
+
+#coded-by a:hover {
+  text-decoration: underline;
+}
+
 /* forcast row */
 .weather-forecast {
   margin-top: 20px;
